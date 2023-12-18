@@ -25,14 +25,13 @@
 
     <!-- 프로젝트 의존성 -->
     <dependencies>
-        <!-- JUnit을 테스트 의존성으로 추가합니다. -->
+        <!-- JUnit 5 Dependency -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0</version>
             <scope>test</scope>
         </dependency>
-        <!-- 다른 필요한 의존성을 여기에 추가합니다. -->
     </dependencies>
 
     <build>
