@@ -1,39 +1,40 @@
 pipeline {
     agent any
 
-    tools {
-        // Maven 버전을 지정합니다. Global Tool Configuration에서 설정한 이름을 사용합니다.
-        maven "Maven3"
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                // 소스 코드 체크아웃
                 checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                // Maven을 사용하여 프로젝트 빌드
-                sh 'mvn clean package'
+                // Windows에서는 sh 대신 bat 명령어를 사용합니다.
+                bat 'mvn clean package'
             }
         }
 
         stage('Test') {
             steps {
-                // Maven을 사용하여 테스트 실행
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    // JUnit 테스트 결과 수집
-                    junit '**/target/surefire-reports/*.xml'
-                }
+                // Windows에서는 sh 대신 bat 명령어를 사용합니다.
+                bat 'mvn test'
             }
         }
+    }
 
-        // 추가적인 빌드 단계...
+    post {
+        always {
+            // 빌드 결과에 상관없이 항상 실행될 스텝
+            echo 'This will always run'
+        }
+        success {
+            // 빌드 성공 시 실행될 스텝
+            echo 'Build was a success!'
+        }
+        failure {
+            // 빌드 실패 시 실행될 스텝
+            echo 'Build failed.'
+        }
     }
 }
