@@ -1,0 +1,21 @@
+
+1. Kafka 환경
+  1) WSL, Docker desktop 활용
+  2) Docker-compose.yml
+    - Kafka - broker 3식, Zookeeper – 클러스터 관리, Kafdrop – 대시보드 http://localhost:9000
+
+2.실습 내용
+  1)카프카 도커 접속
+    docker exec -it [컨테이너 이름 또는 ID] /bin/sh
+
+  2) 토픽 생성
+    kafka-topics.sh --create --topic my-test-topic --bootstrap-server localhost:9092 --partitions 3 --replication-factor 3
+    브로커 3개를 생성해서 파티션 3개를 생성해봄 각각의 브로커로 파티션이 배포 되는지 확인 하려
+
+  3) Producer 생성
+    kafka-console-producer.sh --broker-list localhost:9092 --topic my-test-topic
+
+  4) 컨슈머 그룹 생성
+    토픽이 각각의 브로커 파티션 3개로 나뉘어져 있으므로 컨슈머 그룹을 생성
+    kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic my-test-topic --from-beginning --group my-test-group
+
