@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 프로젝트의 기본 구조를 정의합니다. -->
+    <groupId>com.example</groupId>
+    <artifactId>example-app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- 빌드될 패키지의 타입을 지정합니다. -->
+    <packaging>jar</packaging>
+
+    <!-- 프로젝트 정보 -->
+    <name>Example Application</name>
+    <description>This is a simple project configured for Jenkinsfile.</description>
+
+    <!-- 사용할 Java 버전을 설정합니다. -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <!-- 프로젝트 의존성 -->
+    <dependencies>
+        <!-- JUnit 5 Dependency -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Java 소스를 컴파일하기 위한 Maven 컴파일러 플러그인 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <!-- 다른 필요한 빌드 플러그인을 여기에 추가합니다. -->
+        </plugins>
+    </build>
+</project>
