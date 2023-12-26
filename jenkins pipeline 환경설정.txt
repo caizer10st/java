@@ -1,0 +1,20 @@
+1. jenkins web 콘솔
+  1) 접속 URL : http://Localhost:8080
+  2) 접속 계정 : ikkim/daywork10
+
+2. github
+  1) URL Repo : https://github.com/caizer10st/java
+  2) github Webhooks 설정
+    - payload URL : 젠킨스의 로컬 URL을 깃헙에 연동하기 위해 public ip 환경 필요
+      Ngrok을 사용하여 터널링
+      jenkins port가 8080이므로, Ngrok http 8080 입력하면
+      http://localhost:8080을 ngrok에서 알려주는 임의의 public ip로 터널링 됨
+      이때 Public URL을 github의 webhooks 설정의 payload에 입력, Payload URL에 입력하고 “/github-webhook/” 추가함.
+
+3. github repo 연동
+
+4. 동작 방식
+  1) 코드를 커밋하고 깃헙에 푸쉬하게 되면
+  2) 웹훅이 동작하여 젠킨스에서 파이프라인이 동작함
+  3) 파이프라인 동작 정의는 Jenkinsfile에 정의
+
